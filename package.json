@@ -10,6 +10,8 @@
   "author": "Arka Sheikh",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^6.8.4",
+    "morgan": "^1.10.0"
   }
 }
