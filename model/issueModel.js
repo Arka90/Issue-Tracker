@@ -9,7 +9,7 @@ const issueSchema = new mongoose.Schema({
     type: String,
   },
 
-  label: Array,
+  label: [String],
 
   Author: {
     type: String,
@@ -18,7 +18,7 @@ const issueSchema = new mongoose.Schema({
 
   Project: {
     type: mongoose.Schema.ObjectId,
-    ref: 'project',
+    ref: 'Project',
   },
 });
 
