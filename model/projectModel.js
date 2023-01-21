@@ -16,13 +16,6 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: [true, 'A Project Must have an Author'],
   },
-
-  issues: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Issue',
-    },
-  ],
 });
 
 const Project = mongoose.model('Project', projectSchema);

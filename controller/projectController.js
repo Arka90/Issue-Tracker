@@ -1,10 +1,10 @@
 const Project = require('./../model/projectModel');
 const catchAsync = require('./../util/catchAsync');
 const AppError = require('./../util/appError');
-const { json } = require('express');
+
 exports.createProject = catchAsync(async (req, res, next) => {
   const newProject = await Project.create(req.body);
-  return res.status(200).json({
+  return res.status(201).json({
     status: 'sucess',
     data: {
       project: newProject,

@@ -1,10 +1,21 @@
 const express = require('express');
 const projectController = require('./../controller/projectController');
-const router = express.Router();
+const issueController = require('./../controller/issueController');
+const router = express.Router({ mergeParams: true });
 
-router.post('/createProject', projectController.createProject);
-router.get('/getAllProject', projectController.getAllProject);
-router.get('/getProject/:id', projectController.getProject);
-router.delete('/deleteProject/:id', projectController.deleteProject);
+router
+  .route('/:projectId/issue')
+  .get(issueController.getAllIssues)
+  .post(issueController.createIssue);
+
+router
+  .route('/')
+  .get(projectController.getAllProject)
+  .post(projectController.createProject);
+
+router
+  .route('/:id')
+  .get(projectController.getProject)
+  .delete(projectController.deleteProject);
 
 module.exports = router;
