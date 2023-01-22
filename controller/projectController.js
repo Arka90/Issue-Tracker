@@ -28,7 +28,7 @@ exports.getProject = catchAsync(async (req, res, next) => {
   const project = await Project.findById(req.params.id);
 
   if (!project) {
-    return next(new AppError('No tour find with the ID', 404));
+    return next(new AppError('No Project found with the ID', 404));
   }
 
   res.status(200).json({
@@ -40,11 +40,8 @@ exports.getProject = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteProject = catchAsync(async (req, res, next) => {
-  const project = await Project.findByIdAndDelete(req.params.id);
+  await Project.findByIdAndDelete(req.params.id);
 
-  if (!project) {
-    return next(new AppError('No Project found with that ID', 404));
-  }
   res.status(204).json({
     status: 'success',
     data: null,

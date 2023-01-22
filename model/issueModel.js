@@ -11,15 +11,29 @@ const issueSchema = new mongoose.Schema({
 
   label: [String],
 
-  Author: {
+  author: {
     type: String,
     required: [true, 'Author must put their name'],
   },
 
-  Project: {
+  project: {
     type: mongoose.Schema.ObjectId,
     ref: 'Project',
+    require: [true, 'Issue must belongs to a project'],
   },
+
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+issueSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'project',
+    select: 'name description author',
+  });
+  next();
 });
 
 const Issue = mongoose.model('Issue', issueSchema);

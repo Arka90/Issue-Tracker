@@ -3,7 +3,7 @@ const catchAsync = require('./../util/catchAsync');
 const AppError = require('./../util/appError');
 
 exports.createIssue = catchAsync(async function (req, res, next) {
-  if (!req.body.Project) req.body.Project = req.params.projectId;
+  if (!req.body.project) req.body.project = req.params.projectId;
 
   const newIssue = await Issue.create(req.body);
 
@@ -16,9 +16,11 @@ exports.createIssue = catchAsync(async function (req, res, next) {
 });
 
 exports.getAllIssues = catchAsync(async function (req, res, next) {
+  console.log(req.query.issue);
+
   let filter = {};
 
-  if (req.params.projectId) filter = { Project: req.params.projectId };
+  if (req.params.projectId) filter = { project: req.params.projectId };
 
   const issues = await Issue.find(filter);
 
