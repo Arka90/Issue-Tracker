@@ -22,7 +22,16 @@ exports.getAllIssues = catchAsync(async function (req, res, next) {
 
   if (req.params.projectId) filter = { project: req.params.projectId };
 
-  const issues = await Issue.find(filter);
+  const query = Issue.find(filter);
+
+  if (req.query.issue)
+    query.find({
+      label: { $all: req.query.issue },
+    });
+
+  if (req.query.author) query.find({ author: req.query.author });
+
+  const issues = await query;
 
   res.status(200).json({
     status: 'sucess',
