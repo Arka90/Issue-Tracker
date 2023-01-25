@@ -5,6 +5,11 @@ const issueRouter = require('./routes/issueRoutes');
 const AppError = require('./util/appError');
 const globalErrorHandeler = require('./controller/errorController');
 const app = express();
+const ejs = require('ejs');
+const path = require('path');
+
+app.set('views', path.join(__dirname, views));
+app.set('view engine', ejs);
 
 app.use(morgan('dev'));
 app.use(express.json());
