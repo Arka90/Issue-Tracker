@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const slugify = require('slugify');
 const issueSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -26,6 +26,15 @@ const issueSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+});
+
+issueSchema.pre('save', function (next) {
+  const sluggedLabel = this.label.map((el) => {
+    return slugify(el, { lower: true });
+  });
+
+  this.label = sluggedLabel;
+  next();
 });
 
 issueSchema.pre(/^find/, function (next) {

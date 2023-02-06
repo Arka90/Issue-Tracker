@@ -16,8 +16,6 @@ exports.createIssue = catchAsync(async function (req, res, next) {
 });
 
 exports.getAllIssues = catchAsync(async function (req, res, next) {
-  console.log(req.query.issue);
-
   let filter = {};
 
   if (req.params.projectId) filter = { project: req.params.projectId };
@@ -30,6 +28,9 @@ exports.getAllIssues = catchAsync(async function (req, res, next) {
     });
 
   if (req.query.author) query.find({ author: req.query.author });
+  if (req.query.title) query.find({ title: { $all: req.query.title } });
+  if (req.query.description)
+    query.find({ description: { $all: req.query.description } });
 
   const issues = await query;
 

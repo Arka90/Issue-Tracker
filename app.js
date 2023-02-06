@@ -8,8 +8,10 @@ const app = express();
 const ejs = require('ejs');
 const path = require('path');
 
-app.set('views', path.join(__dirname, views));
+// Setting Up the views
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', ejs);
+app.use(express.static(`${__dirname}/public`));
 
 app.use(morgan('dev'));
 app.use(express.json());
