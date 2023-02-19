@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/home.css" />
+    <title><%= title%></title>
+  </head>
+  <body>
+    <div class="heading-container"><h1>Issue Tracker</h1></div>
+    <div class="sub-heading-container"><h4>Projects</h4></div>
+    <ul class="project-list">
+      <% for(project of projects){%>
+      <li class="project-list-items" id="project-<%=project._id%>">
+        <h3 class="project-name"><%=project.name%></h3>
+        <p class="project-desc"><%=project.description%></p>
+        <p class="project-author">Author : <%=project.author%></p>
+        <a class="view-more" href="/project/<%=project._id%>">View More</a>
+      </li>
+      <%}%>
+    </ul>
+    <button class="add-button">+</button>
+  </body>
+  <script>
+    const add_button = document.querySelector('.add-button');
+
+    add_button.addEventListener('click', () => {
+      window.open('/addProject', '_self');
+    });
+  </script>
+</html>

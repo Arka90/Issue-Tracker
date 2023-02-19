@@ -1,7 +1,7 @@
 const Project = require('./../model/projectModel');
 const catchAsync = require('./../util/catchAsync');
 const AppError = require('./../util/appError');
-
+const Issue = require('./../model/issueModel');
 exports.createProject = catchAsync(async (req, res, next) => {
   const newProject = await Project.create(req.body);
   return res.status(201).json({
@@ -40,6 +40,7 @@ exports.getProject = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteProject = catchAsync(async (req, res, next) => {
+  await Issue.deleteMany({ project: req.params.id });
   await Project.findByIdAndDelete(req.params.id);
 
   res.status(204).json({

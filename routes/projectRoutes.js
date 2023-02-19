@@ -3,6 +3,8 @@ const projectController = require('./../controller/projectController');
 const issueController = require('./../controller/issueController');
 const router = express.Router({ mergeParams: true });
 
+// router.get();
+
 router
   .route('/:projectId/issue')
   .get(issueController.getAllIssues)

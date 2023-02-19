@@ -45,6 +45,11 @@ issueSchema.pre(/^find/, function (next) {
   next();
 });
 
+issueSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
+
 const Issue = mongoose.model('Issue', issueSchema);
 
 module.exports = Issue;

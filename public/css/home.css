@@ -1,0 +1,82 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2e323d;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.heading-container {
+  font-size: 18px;
+  text-align: center;
+  padding: 12px;
+}
+
+.sub-heading-container {
+  font-size: 30px;
+  padding: 12px;
+}
+
+.project-list {
+  list-style: none;
+  padding: 40px;
+}
+
+.project-list-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding: 10px;
+  border: 2px solid #202020;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.project-list-items:hover {
+  cursor: pointer;
+  color: aquamarine;
+}
+
+.view-more {
+  font-size: 30px;
+  text-decoration: none;
+  border: 2px solid aquamarine;
+  color: aquamarine;
+  padding: 5px;
+  width: 15%;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.project-name {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+.project-desc {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.project-author {
+  margin-bottom: 20px;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  font-size: 40px;
+  background-color: aquamarine;
+  border-radius: 50%;
+  position: fixed;
+  padding: 10px;
+  bottom: 50px;
+  right: 50px;
+  cursor: pointer;
+}

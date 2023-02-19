@@ -22,13 +22,13 @@ exports.getAllIssues = catchAsync(async function (req, res, next) {
 
   const query = Issue.find(filter);
 
-  if (req.query.issue)
+  if (req.query.label)
     query.find({
-      label: { $all: req.query.issue },
+      label: { $all: req.query.label },
     });
 
   if (req.query.author) query.find({ author: req.query.author });
-  if (req.query.title) query.find({ title: { $all: req.query.title } });
+  if (req.query.title) query.find({ title: { $all: req.query.slug } });
   if (req.query.description)
     query.find({ description: { $all: req.query.description } });
 
